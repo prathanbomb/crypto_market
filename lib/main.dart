@@ -210,7 +210,7 @@ class _CoinItemWidgetState extends State<CoinItemWidget> {
                                 new Icon(
                                   getIcon(double.parse(widget.coin.percentChange1h).isNegative),
                                   color: double.parse(widget.coin.percentChange1h).isNegative ? Colors.red : Colors.green,
-                                  size: 14.0,
+                                  size: 16.0,
                                 ),
                               ],
                             ),
