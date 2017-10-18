@@ -1,10 +1,10 @@
 # CryptoMarket
 
-A project for learning how to build app using Flutter.
+A project for learning how to build cross-platform app using Flutter.
 - Integrated fetching data from API and Local
 - Building complex layout
 - Routing and navigation
-- Plateform specific code
+- Platform specific code
 
 # upcoming
 - Integration with Firebase
