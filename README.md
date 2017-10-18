@@ -1,6 +1,19 @@
-# crypto_market
+# CryptoMarket
 
-A new Flutter project.
+A project for learning how to build app using Flutter.
+- Integrated fetching data from API and Local
+- Building complex layout
+- Routing and navigation
+- Plateform specific code
+
+# upcoming
+- Integration with Firebase
+- Graph and animation
+
+<p align="center">
+  <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/Screenshot_1508310487.png" width="350"/>
+  <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202017-10-18%20at%2014.01.52.png" width="350"/>
+</p>
 
 ## Getting Started
 
