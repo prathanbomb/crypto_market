@@ -1,20 +1,26 @@
 PODS:
   - Flutter (1.0.0)
+  - path_provider (0.0.1):
+    - Flutter
   - url_launcher (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `/Users/prathanbomb/flutter/bin/cache/artifacts/engine/ios`)
+  - path_provider (from `/Users/prathanbomb/.pub-cache/hosted/pub.dartlang.org/path_provider-0.2.1+1/ios`)
   - url_launcher (from `/Users/prathanbomb/.pub-cache/hosted/pub.dartlang.org/url_launcher-0.4.2+5/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: /Users/prathanbomb/flutter/bin/cache/artifacts/engine/ios
+  path_provider:
+    :path: /Users/prathanbomb/.pub-cache/hosted/pub.dartlang.org/path_provider-0.2.1+1/ios
   url_launcher:
     :path: /Users/prathanbomb/.pub-cache/hosted/pub.dartlang.org/url_launcher-0.4.2+5/ios
 
 SPEC CHECKSUMS:
   Flutter: d674e78c937094a75ac71dd77e921e840bea3dbf
+  path_provider: f96fff6166a8867510d2c25fdcc346327cc4b259
   url_launcher: 0067ddb8f10d36786672aa0722a21717dba3a298
 
 PODFILE CHECKSUM: cc70c01bca487bebd110b87397f017f3b76a89f1

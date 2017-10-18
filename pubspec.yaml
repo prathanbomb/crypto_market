@@ -8,13 +8,14 @@ dependencies:
   intl: 0.15.1
   string_scanner: 1.0.2
   url_launcher: 0.4.2+5
+  path_provider: "^0.2.1+1"
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 
-# For information on the generic Dart part of this file, see the
+# For information on the generic Dart part of this file, see thef
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
 # The following section is specific to Flutter.

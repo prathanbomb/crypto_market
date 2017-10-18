@@ -81,13 +81,13 @@ class _InfoPageState extends State<InfoPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       new Text(
-                        widget.coin.priceUsd,
+                        widget.coin.formatCurrency(widget.coin.priceThb),
                         style: new TextStyle(
                           fontSize: 28.0,
                         ),
                       ),
                       new Text(
-                        "USD",
+                        "THB",
                         style: new TextStyle(
                           fontSize: 14.0,
                         ),
@@ -133,7 +133,7 @@ class _InfoPageState extends State<InfoPage> {
                     left: 5.0,
                   ),
                   child: new Text(
-                    "\$" + widget.coin.volumeUsd,
+                    "\$" + widget.coin.volumeThb,
                     style: new TextStyle(
                       fontSize: 12.0,
                       color: Colors.black,
@@ -179,21 +179,21 @@ class _InfoPageState extends State<InfoPage> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     new Text(
-                      widget.coin.percentChange1h + "%",
+                      (double.parse(widget.coin.percentChange1h).isNegative ? "" : "+") + widget.coin.percentChange1h + "%",
                       style: new TextStyle(
                         fontSize: 12.0,
                         color: double.parse(widget.coin.percentChange1h).isNegative ? Colors.red : Colors.green,
                       ),
                     ),
                     new Text(
-                      widget.coin.percentChange24h + "%",
+                      (double.parse(widget.coin.percentChange24h).isNegative ? "" : "+") + widget.coin.percentChange24h + "%",
                       style: new TextStyle(
                         fontSize: 12.0,
                         color: double.parse(widget.coin.percentChange24h).isNegative ? Colors.red : Colors.green,
                       ),
                     ),
                     new Text(
-                      widget.coin.percentChange7d + "%",
+                      (double.parse(widget.coin.percentChange7d).isNegative ? "" : "+") + widget.coin.percentChange7d + "%",
                       style: new TextStyle(
                         fontSize: 12.0,
                         color: double.parse(widget.coin.percentChange7d).isNegative ? Colors.red : Colors.green,
