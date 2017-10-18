@@ -191,9 +191,21 @@ class _CoinItemWidgetState extends State<CoinItemWidget> {
                         crossAxisAlignment: CrossAxisAlignment.baseline,
                         children: <Widget>[
                           new Text(
-                            widget.coin.formatCurrency(widget.coin.priceThb) + " THB",
+                            widget.coin.formatCurrency(widget.coin.priceThb).substring(0, widget.coin.formatCurrency(widget.coin.priceThb).length - 4),
                             style: new TextStyle(
                               fontSize: 18.0,
+                            ),
+                          ),
+                          new Text(
+                            widget.coin.formatCurrency(widget.coin.priceThb).substring(widget.coin.formatCurrency(widget.coin.priceThb).length - 4, widget.coin.formatCurrency(widget.coin.priceThb).length),
+                            style: new TextStyle(
+                              fontSize: 14.0,
+                            ),
+                          ),
+                          new Text(
+                            " THB",
+                            style: new TextStyle(
+                              fontSize: 14.0,
                             ),
                           ),
                           new Padding(

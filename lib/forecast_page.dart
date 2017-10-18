@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
+import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,6 +23,9 @@ class _ForecastPageState extends State<ForecastPage> {
 
   static const platform = const MethodChannel('samples.flutter.io/battery');
   Map<String, List> data;
+  double max;
+  double min;
+  double diff;
   bool isLoading = true;
   String _batteryLevel = 'Unknown battery level.';
 
@@ -36,8 +40,16 @@ class _ForecastPageState extends State<ForecastPage> {
     this.setState(() {
       data = JSON.decode(response.body);
       isLoading = false;
+      max = data['forecast'][0]['usd'];
+      min = data['forecast'][0]['usd'];
+      data['forecast'].forEach((value) {
+        max < value['usd'] ? max = value['usd'] : max;
+        min > value['usd'] ? min = value['usd'] : min;
+      });
+      print(max.toString());
+      print(min.toString());
+      print(diff = max - min);
     });
-    print(data['forecast']);
 
     return "Success!";
   }
