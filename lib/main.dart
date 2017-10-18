@@ -187,7 +187,6 @@ class _CoinItemWidgetState extends State<CoinItemWidget> {
                         bottom: 5.0,
                       ),
                       child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         textBaseline: TextBaseline.alphabetic,
                         crossAxisAlignment: CrossAxisAlignment.baseline,
                         children: <Widget>[
@@ -197,15 +196,23 @@ class _CoinItemWidgetState extends State<CoinItemWidget> {
                               fontSize: 18.0,
                             ),
                           ),
-                          new CustomPaint(
-                            size: new Size(10.0, 10.0),
-                            painter: new BarChartPainter(double.parse(widget.coin.percentChange1h).isNegative),
-                          ),
-                          new Text(
-                            (double.parse(widget.coin.percentChange1h).isNegative ? "" : "+") + widget.coin.percentChange1h + "%",
-                            style: new TextStyle(
-                              fontSize: 12.0,
-                              color: double.parse(widget.coin.percentChange1h).isNegative ? Colors.red : Colors.green,
+                          new Padding(
+                            padding: new EdgeInsets.only(left: 5.0),
+                            child: new Row(
+                              children: <Widget>[
+                                new Text(
+                                  (double.parse(widget.coin.percentChange1h).isNegative ? "" : "+") + widget.coin.percentChange1h + "%",
+                                  style: new TextStyle(
+                                    fontSize: 12.0,
+                                    color: double.parse(widget.coin.percentChange1h).isNegative ? Colors.red : Colors.green,
+                                  ),
+                                ),
+                                new Icon(
+                                  getIcon(double.parse(widget.coin.percentChange1h).isNegative),
+                                  color: double.parse(widget.coin.percentChange1h).isNegative ? Colors.red : Colors.green,
+                                  size: 14.0,
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -265,45 +272,10 @@ class _CoinItemWidgetState extends State<CoinItemWidget> {
     Navigator.of(context).push(route);
   }
 
-}
-
-class BarChartPainter extends CustomPainter {
-
-  BarChartPainter(this.isDropped);
-
-  final bool isDropped;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-
-    final paint = new Paint()
-      ..color = isDropped ? Colors.red : Colors.green
-      ..style = PaintingStyle.fill;
-
-    canvas.drawRect(
-      new Rect.fromLTRB(
-        2.0,
-        8.0,
-        10.0,
-        18.0,
-      ),
-      paint,
-    );
-
-    canvas.clipRect(
-      new Rect.fromLTRB(
-        2.0,
-        8.0,
-        10.0,
-        18.0,
-      ),
-    );
-
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
+  IconData getIcon(bool isNegative) {
+    IconData icon;
+    isNegative ? icon = Icons.arrow_drop_down : icon = Icons.arrow_drop_up;
+    return icon;
   }
 
 }
