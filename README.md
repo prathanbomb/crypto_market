@@ -7,7 +7,7 @@ A project for learning how to build cross-platform app using Flutter.
 - [x] Building complex layout
 - [x] Routing and navigation
 - [x] Platform specific code
-- [ ]Integration with Firebase
+- [ ] Integration with Firebase
 - [ ] Graph and animation
 
 | iOS | Android |
@@ -15,7 +15,7 @@ A project for learning how to build cross-platform app using Flutter.
 | <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/screenshot_ios.png" width="350"/> | <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/screenshot_android.png" width="350"/> |
 | <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/screenshot_ios_2.png" width="350"/> | <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/screenshot_android_2.png" width="350"/> |
 
-### How run the project
+# How run the project
 
 You need latest version of Flutter installed in your system for build and run the project.
 
