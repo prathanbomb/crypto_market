@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:crypto_market/models.dart';
 
@@ -81,13 +82,22 @@ class _InfoPageState extends State<InfoPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       new Text(
-                        widget.coin.formatCurrency(widget.coin.priceThb),
+                        widget.coin.formatCurrency(widget.coin.priceThb).substring(0, widget.coin.formatCurrency(widget.coin.priceThb).length - 4),
                         style: new TextStyle(
                           fontSize: 28.0,
                         ),
                       ),
+                      new Padding(
+                        padding: new EdgeInsets.only(top: Platform.isIOS ? 10.0 : 9.0),
+                        child: new Text(
+                          widget.coin.formatCurrency(widget.coin.priceThb).substring(widget.coin.formatCurrency(widget.coin.priceThb).length - 4, widget.coin.formatCurrency(widget.coin.priceThb).length),
+                          style: new TextStyle(
+                            fontSize: 18.0,
+                          ),
+                        ),
+                      ),
                       new Text(
-                        "THB",
+                        " THB",
                         style: new TextStyle(
                           fontSize: 14.0,
                         ),
@@ -133,7 +143,7 @@ class _InfoPageState extends State<InfoPage> {
                     left: 5.0,
                   ),
                   child: new Text(
-                    "\$" + widget.coin.volumeThb,
+                    "\$" + widget.coin.formatVolume(widget.coin.volumeUsd) + "M",
                     style: new TextStyle(
                       fontSize: 12.0,
                       color: Colors.black,

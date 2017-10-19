@@ -8,6 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:crypto_market/models.dart';
 import 'package:crypto_market/info_page.dart';
 import 'package:crypto_market/forecast_page.dart';
+import 'package:flutter_web_view/flutter_web_view.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
@@ -81,6 +82,7 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     getData();
+    getDataFromAPI();
   }
 
   @override
@@ -147,6 +149,8 @@ class CoinItemWidget extends StatefulWidget {
 }
 
 class _CoinItemWidgetState extends State<CoinItemWidget> {
+
+  FlutterWebView flutterWebView = new FlutterWebView();
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +270,10 @@ class _CoinItemWidgetState extends State<CoinItemWidget> {
   }
 
   void _onTapInfo() {
-    Route route = new MaterialPageRoute(
+    Route route = Platform.isAndroid ? new MaterialPageRoute(
+      settings: new RouteSettings(name: "/market/coin"),
+      builder: (BuildContext context) => new InfoPage(coin: widget.coin),
+    ) : new CupertinoPageRoute(
       settings: new RouteSettings(name: "/market/coin"),
       builder: (BuildContext context) => new InfoPage(coin: widget.coin),
     );
@@ -274,14 +281,57 @@ class _CoinItemWidgetState extends State<CoinItemWidget> {
   }
 
   void _onTapForecast() {
-    Route route = Platform.isAndroid ? new MaterialPageRoute(
-      settings: new RouteSettings(name: "/market/coin"),
-      builder: (BuildContext context) => new ForecastPage(coin: widget.coin),
-    ) : new CupertinoPageRoute(
-      settings: new RouteSettings(name: "/market/coin"),
-      builder: (BuildContext context) => new ForecastPage(coin: widget.coin),
+//    Route route = Platform.isAndroid ? new MaterialPageRoute(
+//      settings: new RouteSettings(name: "/market/coin"),
+//      builder: (BuildContext context) => new ForecastPage(coin: widget.coin),
+//    ) : new CupertinoPageRoute(
+//      settings: new RouteSettings(name: "/market/coin"),
+//      builder: (BuildContext context) => new ForecastPage(coin: widget.coin),
+//    );
+//    Navigator.of(context).push(route);
+
+    bool _isLoading = false;
+
+    flutterWebView.launch(
+        "https://coinbin.org/" + widget.coin.symbol.toLowerCase() + "/forecast/graph",
+        headers: {
+          "X-SOME-HEADER": "MyCustomHeader",
+        },
+        javaScriptEnabled: true,
+        inlineMediaEnabled: true,
+        toolbarActions: [
+          new ToolbarAction("Dismiss", 1),
+          new ToolbarAction("Reload", 2)
+        ],
+        barColor: Colors.blue,
+        tintColor: Colors.white);
+    flutterWebView.onToolbarAction.listen((identifier) {
+      switch (identifier) {
+        case 1:
+          flutterWebView.dismiss();
+          break;
+        case 2:
+          reload();
+          break;
+      }
+    });
+
+    flutterWebView.onWebViewDidStartLoading.listen((url) {
+      setState(() => _isLoading = true);
+    });
+    flutterWebView.onWebViewDidLoad.listen((url) {
+      setState(() => _isLoading = false);
+    });
+
+  }
+
+  void reload() {
+    flutterWebView.load(
+      "https://coinbin.org/" + widget.coin.symbol.toLowerCase() + "/forecast/graph",
+      headers: {
+        "X-SOME-HEADER": "MyCustomHeader",
+      },
     );
-    Navigator.of(context).push(route);
   }
 
   IconData getIcon(bool isNegative) {

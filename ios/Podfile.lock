@@ -1,5 +1,7 @@
 PODS:
   - Flutter (1.0.0)
+  - flutter_web_view (0.0.1):
+    - Flutter
   - path_provider (0.0.1):
     - Flutter
   - url_launcher (0.0.1):
@@ -7,12 +9,15 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `/Users/prathanbomb/flutter/bin/cache/artifacts/engine/ios`)
+  - flutter_web_view (from `/Users/prathanbomb/.pub-cache/hosted/pub.dartlang.org/flutter_web_view-0.0.1/ios`)
   - path_provider (from `/Users/prathanbomb/.pub-cache/hosted/pub.dartlang.org/path_provider-0.2.1+1/ios`)
   - url_launcher (from `/Users/prathanbomb/.pub-cache/hosted/pub.dartlang.org/url_launcher-0.4.2+5/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: /Users/prathanbomb/flutter/bin/cache/artifacts/engine/ios
+  flutter_web_view:
+    :path: /Users/prathanbomb/.pub-cache/hosted/pub.dartlang.org/flutter_web_view-0.0.1/ios
   path_provider:
     :path: /Users/prathanbomb/.pub-cache/hosted/pub.dartlang.org/path_provider-0.2.1+1/ios
   url_launcher:
@@ -20,6 +25,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: d674e78c937094a75ac71dd77e921e840bea3dbf
+  flutter_web_view: 95e784768166c40b99e0801adff6ccc798bde237
   path_provider: f96fff6166a8867510d2c25fdcc346327cc4b259
   url_launcher: 0067ddb8f10d36786672aa0722a21717dba3a298
 

@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
@@ -95,10 +96,14 @@ class _ForecastPageState extends State<ForecastPage> {
         centerTitle: true,
       ),
       body: isLoading ? showProgressIndicator() : new RefreshIndicator(
-        child: new ListView.builder(
-          scrollDirection: Axis.vertical,
-          itemCount: data['forecast'] == null ? 0 : 7,
-          itemBuilder: _itemBuilder,
+//        child: new ListView.builder(
+//          scrollDirection: Axis.horizontal,
+//          itemCount: data['forecast'] == null ? 0 : data['forecast'].length,
+//          itemBuilder: _itemBuilder,
+//        ),
+        child: new CustomPaint(
+          size: new Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
+          painter: new LineGraph(data['forecast'], max, min, MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
         ),
         onRefresh: getData,
       ),
@@ -122,6 +127,32 @@ class _ForecastPageState extends State<ForecastPage> {
       data['forecast'][index]['usd'],
       data['forecast'][index]['when'],
     );
+  }
+
+}
+
+class LineGraph extends CustomPainter {
+
+  static const barWidth = 10.0;
+
+  LineGraph(List data, double max, double min, double width, double height);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    final paint = new Paint()
+      ..color = Colors.blue
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.fill;
+
+    List offsetList = [new Offset(2.0, 5.0), new Offset(100.0, 100.0), new Offset(200.0, 100.0),];
+    canvas.drawPoints(PointMode.lines, offsetList, paint);
+
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 
 }
