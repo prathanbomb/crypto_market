@@ -1,8 +1,8 @@
-import 'dart:ui';
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,6 +28,8 @@ class _ForecastPageState extends State<ForecastPage> {
   double min;
   double diff;
   bool isLoading = true;
+  String graphData = "";
+  int n = 0;
   String _batteryLevel = 'Unknown battery level.';
 
   Future<String> getData() async {
@@ -46,7 +48,12 @@ class _ForecastPageState extends State<ForecastPage> {
       data['forecast'].forEach((value) {
         max < value['usd'] ? max = value['usd'] : max;
         min > value['usd'] ? min = value['usd'] : min;
+        if(n<29) {
+          graphData = graphData + log(value['usd']).toString() + ",";
+          n++;
+        }
       });
+      graphData = graphData.substring(0,graphData.length-1);
       print(max.toString());
       print(min.toString());
       print(diff = max - min);
@@ -101,9 +108,12 @@ class _ForecastPageState extends State<ForecastPage> {
 //          itemCount: data['forecast'] == null ? 0 : data['forecast'].length,
 //          itemBuilder: _itemBuilder,
 //        ),
-        child: new CustomPaint(
-          size: new Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
-          painter: new LineGraph(data['forecast'], max, min, MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
+//        child: new CustomPaint(
+//          size: new Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
+//          painter: new LineGraph(data['forecast'], max, min, MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
+//        ),
+        child: new Image(
+          image: new NetworkImage("http://chart.googleapis.com/chart?cht=lc&chxt=x,y&chs=400x200&chd=t:" + graphData + "&chds=a&chxl=0:|0|7|14|21|28&chm=o,0066FF,0,-7,4&chls=2,2,2&chg=" + (100/28).toString() + ",20,1,5", scale: 1.0),
         ),
         onRefresh: getData,
       ),
@@ -146,7 +156,7 @@ class LineGraph extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     List offsetList = [new Offset(2.0, 5.0), new Offset(100.0, 100.0), new Offset(200.0, 100.0),];
-    canvas.drawPoints(PointMode.lines, offsetList, paint);
+//    canvas.drawPoints(PointMode.lines, offsetList, paint);
 
   }
 

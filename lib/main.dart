@@ -281,47 +281,47 @@ class _CoinItemWidgetState extends State<CoinItemWidget> {
   }
 
   void _onTapForecast() {
-//    Route route = Platform.isAndroid ? new MaterialPageRoute(
-//      settings: new RouteSettings(name: "/market/coin"),
-//      builder: (BuildContext context) => new ForecastPage(coin: widget.coin),
-//    ) : new CupertinoPageRoute(
-//      settings: new RouteSettings(name: "/market/coin"),
-//      builder: (BuildContext context) => new ForecastPage(coin: widget.coin),
-//    );
-//    Navigator.of(context).push(route);
+    Route route = Platform.isAndroid ? new MaterialPageRoute(
+      settings: new RouteSettings(name: "/market/coin"),
+      builder: (BuildContext context) => new ForecastPage(coin: widget.coin),
+    ) : new CupertinoPageRoute(
+      settings: new RouteSettings(name: "/market/coin"),
+      builder: (BuildContext context) => new ForecastPage(coin: widget.coin),
+    );
+    Navigator.of(context).push(route);
 
-    bool _isLoading = false;
-
-    flutterWebView.launch(
-        "https://coinbin.org/" + widget.coin.symbol.toLowerCase() + "/forecast/graph",
-        headers: {
-          "X-SOME-HEADER": "MyCustomHeader",
-        },
-        javaScriptEnabled: true,
-        inlineMediaEnabled: true,
-        toolbarActions: [
-          new ToolbarAction("Dismiss", 1),
-          new ToolbarAction("Reload", 2)
-        ],
-        barColor: Colors.blue,
-        tintColor: Colors.white);
-    flutterWebView.onToolbarAction.listen((identifier) {
-      switch (identifier) {
-        case 1:
-          flutterWebView.dismiss();
-          break;
-        case 2:
-          reload();
-          break;
-      }
-    });
-
-    flutterWebView.onWebViewDidStartLoading.listen((url) {
-      setState(() => _isLoading = true);
-    });
-    flutterWebView.onWebViewDidLoad.listen((url) {
-      setState(() => _isLoading = false);
-    });
+//    bool _isLoading = false;
+//
+//    flutterWebView.launch(
+//        "https://coinbin.org/" + widget.coin.symbol.toLowerCase() + "/forecast/graph",
+//        headers: {
+//          "X-SOME-HEADER": "MyCustomHeader",
+//        },
+//        javaScriptEnabled: true,
+//        inlineMediaEnabled: true,
+//        toolbarActions: [
+//          new ToolbarAction("Dismiss", 1),
+//          new ToolbarAction("Reload", 2)
+//        ],
+//        barColor: Colors.blue,
+//        tintColor: Colors.white);
+//    flutterWebView.onToolbarAction.listen((identifier) {
+//      switch (identifier) {
+//        case 1:
+//          flutterWebView.dismiss();
+//          break;
+//        case 2:
+//          reload();
+//          break;
+//      }
+//    });
+//
+//    flutterWebView.onWebViewDidStartLoading.listen((url) {
+//      setState(() => _isLoading = true);
+//    });
+//    flutterWebView.onWebViewDidLoad.listen((url) {
+//      setState(() => _isLoading = false);
+//    });
 
   }
 
