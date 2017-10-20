@@ -49,7 +49,7 @@ class _ForecastPageState extends State<ForecastPage> {
         max < value['usd'] ? max = value['usd'] : max;
         min > value['usd'] ? min = value['usd'] : min;
         if(n<29) {
-          graphData = graphData + log(value['usd']).toString() + ",";
+          graphData = graphData + value['usd'].toString() + ",";
           n++;
         }
       });
@@ -113,7 +113,7 @@ class _ForecastPageState extends State<ForecastPage> {
 //          painter: new LineGraph(data['forecast'], max, min, MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
 //        ),
         child: new Image(
-          image: new NetworkImage("http://chart.googleapis.com/chart?cht=lc&chxt=x,y&chs=400x200&chd=t:" + graphData + "&chds=a&chxl=0:|0|7|14|21|28&chm=o,0066FF,0,-7,4&chls=2,2,2&chg=" + (100/28).toString() + ",20,1,5", scale: 1.0),
+          image: new NetworkImage("http://chart.googleapis.com/chart?cht=lc&chxt=x,y&chs=400x200&chd=t:" + graphData + "&chds=" + min.toString() + "," + max.toString() + "&chxl=0:|0|7|14|21|28&chm=o,0066FF,0,-7,6&chls=2,2,2&chg=" + (100/28).toString() + ",20,1,5&chxr=1," + min.toString() + "," + max.toString() + "&chxs=1N*cUSD*", scale: 1.0),
         ),
         onRefresh: getData,
       ),
