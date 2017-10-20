@@ -13,6 +13,7 @@ A project for learning how to build cross-platform app using Flutter.
 | iOS | Android |
 | --- | ------- |
 | <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/screenshot_ios.png" width="350"/> | <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/screenshot_android.png" width="350"/> |
+||
 | <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/screenshot_ios_2.png" width="350"/> | <img src="https://github.com/prathanbomb/crypto_market/blob/master/screenshot/screenshot_android_2.png" width="350"/> |
 
 ## How run the project
