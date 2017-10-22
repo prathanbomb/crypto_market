@@ -220,7 +220,7 @@ class _InfoPageState extends State<InfoPage> {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.coin.name),
+        title: new Text("Information"),
         centerTitle: true,
       ),
       body: new Card(
